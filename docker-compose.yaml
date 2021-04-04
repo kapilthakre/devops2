@@ -1,0 +1,22 @@
+version: '3'
+services:
+
+ flask-app:
+  image: flask-docker-demo-app
+  restart: always
+  ports:
+   - "5001:5001"
+
+ mysql:
+  image: mysql:5.7.21
+  volumes:
+   - mysqlvol:/var/lib/mysql/
+  restart: always
+  ports:
+   - "3306:3306"
+  env_file:
+   - ./mysql.env
+
+volumes:
+  mysqlvol:
+
